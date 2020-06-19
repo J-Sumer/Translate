@@ -22,16 +22,20 @@ class Button extends React.Component {
     //     )
     // }
 
+    renderButton(color) {
+        return(
+            <button className={`ui button ${color}`}>
+                <LanguageContext.Consumer>
+                    {(valu) => valu === 'english' ? 'Submit' : 'Samarpinchu'}
+                </LanguageContext.Consumer>
+            </button>
+        )
+    }
+
     render() {
         return (
             <ColorContext.Consumer>
-            {(color) => 
-                <button className={`ui button ${color}`}>
-                    <LanguageContext.Consumer>
-                        {(valu) => valu === 'english' ? 'Submit' : 'Samarpinchu'}
-                    </LanguageContext.Consumer>
-                </button>
-            }                
+            {(color) => this.renderButton(color) }                
             </ColorContext.Consumer>            
         )
     }
